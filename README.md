@@ -19,9 +19,10 @@ This project is a Django-based application that allows for dynamic creation and 
 
 First, clone the repository to your local machine:
 
-bash
+```bash
 git clone https://github.com/Akshat0410/flexitables.git
 cd flexitables
+```
 
 
 ### Building the Docker Containers
