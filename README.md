@@ -33,18 +33,6 @@ Build the Docker containers using Docker Compose:
 docker-compose build
 ```
 
-
-### Running Migrations
-
-After building the containers, run the following commands to make and apply migrations:
-
-```bash
-docker-compose run django python manage.py makemigrations dynamictable
-
-docker-compose run django python manage.py migrate
-```
-
-
 ### Starting the Application
 
 Start the application using Docker Compose:
@@ -52,9 +40,15 @@ Start the application using Docker Compose:
 ```bash
 docker-compose up
 ```
-
 The application should now be running and accessible at `http://localhost:8000`.
 
+### Running Migrations
+
+After building the containers, run the following commands to make and apply migrations:
+
+```bash
+docker-compose run django python manage.py migrate
+```
 
 ## API Endpoints
 
@@ -63,6 +57,7 @@ The application provides the following API endpoints:
 - `/api/organizations/` - Manage organizations.
 - `/api/organizations/{org_id}/tables/` - Manage tables within an organization.
 - `/api/organizations/{org_id}/tables/{table_id}/columns/` - Manage columns within a table.
+- `/api/organizations/{org_id}/models` - Returns all the models within the organization.
 
 ## Postman Collection
 
