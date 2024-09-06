@@ -66,5 +66,5 @@ The application provides the following API endpoints:
 
 ## Postman Collection
 
-You can find the Postman collection for this project [here](https://drive.google.com/your-drive-link).
+You can find the Postman collection for this project [here](https://drive.google.com/file/d/1D_BgVc7GN4Ic1_O659te5mjpoixd6ALK/view?usp=drive_link).
 
