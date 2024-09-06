@@ -62,3 +62,12 @@ The application provides the following API endpoints:
 - `/api/organizations/` - Manage organizations.
 - `/api/organizations/{org_id}/tables/` - Manage tables within an organization.
 - `/api/organizations/{org_id}/tables/{table_id}/columns/` - Manage columns within a table.
+
+## Postman Collection
+
+You can find the Postman collection for this project [here](# Project Name
+
+## Postman Collection
+
+You can find the Postman collection for this project [here](https://drive.google.com/your-drive-link).
+
