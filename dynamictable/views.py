@@ -1,5 +1,4 @@
-from django.shortcuts import render
-
+from django.apps import apps
 from rest_framework import viewsets
 from .models import Organization, MetaTable, MetaColumn
 from .serializers import OrganizationSerializer, TableSerializer, ColumnSerializer
@@ -50,7 +49,9 @@ class TableViewSet(viewsets.ModelViewSet):
                 'db_table': f'"{schema_name}"."{model_name}"'  # Ensure schema and table name are quoted
             })
         })
+        apps.register_model('dynamictable', DynamicModel)
         return DynamicModel
+    
     def create_table(self, model):
         with connection.schema_editor() as schema_editor:
             schema_editor.create_model(model)
@@ -107,14 +108,12 @@ class ColumnViewSet(viewsets.ModelViewSet):
         if serializer.is_valid():
             column = serializer.save()
             table = get_object_or_404(MetaTable, pk=table_id)
-            org = table.organization
-            schema_name = f'org_{org.org_id}'
             column_name = column.name
             column_type = column.data_type
 
             # Dynamically add the column to the model
             with connection.schema_editor() as schema_editor:
-                model = self.create_dynamic_model(table, schema_name)
+                model = apps.get_registered_model('dynamictable', table.name)
                 field = self.get_field_by_type(column_name, column_type)
                 if field:
                     model.add_to_class(column_name, field)
@@ -126,27 +125,14 @@ class ColumnViewSet(viewsets.ModelViewSet):
     def list(self, request, org_id, table_id):
         tables = MetaColumn.objects.filter(table_id=table_id)
         return Response(ColumnSerializer(tables, many=True).data)
-    
-    def create_dynamic_model(self, table: MetaTable, schema_name: str):
-        model_name = table.name
-        from django.db import models
-        DynamicModel = type(model_name, (models.Model,), {
-            '__module__': 'dynamictable.models',
-            'Meta': type('Meta', (), {
-                'db_table': f'"{schema_name}"."{model_name}"'  # Ensure schema and table name are quoted
-            })
-        })
-        return DynamicModel
-    
+        
     def destroy(self, request, org_id, table_id, pk=None):
         column = get_object_or_404(MetaColumn, pk=pk)
         table = get_object_or_404(MetaTable, pk=table_id)
-        org = table.organization
-        schema_name = f'org_{org.org_id}'
         column_name = column.name
 
         with connection.schema_editor() as schema_editor:
-            model = self.create_dynamic_model(table, schema_name)
+            model = apps.get_registered_model('dynamictable', table.name)
             field = model._meta.get_field(column_name)
             schema_editor.remove_field(model, field)
 
