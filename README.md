@@ -87,3 +87,9 @@ The application provides the following API endpoints:
 
 You can find the Postman collection for this project [here](https://drive.google.com/file/d/1fgz8cSjOZ1cmE6V7v06gWoRBOx7z6zt6/view?usp=drive_link).
 
+## Loom Video
+
+Watch the Loom video for a quick overview of the project:
+
+[![Watch the video](https://cdn.loom.com/sessions/thumbnails/https://www.loom.com/share/6d9d1758fb3549c393eb4ee3523ec9f5?sid=95a46071-805b-4342-b8ca-654cb610ab67-with-play-button.png)](https://www.loom.com/share/6d9d1758fb3549c393eb4ee3523ec9f5?sid=56c86d6b-8f67-4131-a1ea-517b34cc0b81)
+
