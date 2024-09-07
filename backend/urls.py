@@ -29,7 +29,7 @@ router.register(r"organizations/(?P<org_id>[^/.]+)/tables/(?P<table_id>[^/.]+)/c
 router.register(r"organizations/(?P<org_id>[^/.]+)/tables/(?P<table_id>[^/.]+)/data/?", DataIngestionViewSet, basename="data")
 
 urlpatterns = [
-    path('organizations/<int:org_id>/models/', organization_models, name='organization_models'),
+    path('api/organizations/<int:org_id>/models/', organization_models, name='organization_models'),
 
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
 ]
