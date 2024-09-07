@@ -24,9 +24,13 @@ First, clone the repository to your local machine:
 
 ```bash
 git clone https://github.com/Akshat0410/flexitables.git
-cd flexitables
 ```
 
+Move in the cloned repository
+
+```bash
+cd flexitables
+```
 
 ### Building the Docker Containers
 
@@ -64,6 +68,20 @@ The application provides the following API endpoints:
 - `/api/organizations/{org_id}/tables/{table_id}/columns/` - Manage columns within a table.
 - `/api/organizations/{org_id}/tables/{table_id}/data` - Manage data within a table.
 - `/api/organizations/{org_id}/models` - Returns all the dynamically created models within an organization.
+
+## Few Points to remeber
+1. Supported values for db_type in the `organizations` api are:
+    - `SQL`
+    - `NOSQL`
+
+2. While creating a column, supported values for the data_type are:
+    - `CharField`
+    - `IntegerField`
+    - `BooleanField`
+
+    They are mapped to equivalent `django_fields`.
+
+3. For every table that is created `id` field is created by default, which is the primary key for every table. We donot have support to create `PRIMARY KEY` at runtime.
 
 ## Postman Collection
 
