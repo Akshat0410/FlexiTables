@@ -69,7 +69,7 @@ The application provides the following API endpoints:
 - `/api/organizations/{org_id}/tables/{table_id}/data` - Manage data within a table.
 - `/api/organizations/{org_id}/models` - Returns all the dynamically created models within an organization.
 
-## Few Points to remeber
+## Few Points to remember
 1. Supported values for db_type in the `organizations` api are:
     - `SQL`
     - `NOSQL`
