@@ -88,11 +88,11 @@ The application provides the following API endpoints:
 You can find the Postman collection for this project [here](https://drive.google.com/file/d/1fgz8cSjOZ1cmE6V7v06gWoRBOx7z6zt6/view?usp=drive_link).
 
 ## Loom Video
-
-[Watch the video](https://www.loom.com/share/6d9d1758fb3549c393eb4ee3523ec9f5?sid=56c86d6b-8f67-4131-a1ea-517b34cc0b81)
-
-## Loom Video
-
-Watch the Loom video for a quick overview of the project:
-
-<div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/6d9d1758fb3549c393eb4ee3523ec9f5?sid=e5ff30fe-7af9-4dc6-a14c-4caf612f5b28" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div>
+    <a href="https://www.loom.com/share/6d9d1758fb3549c393eb4ee3523ec9f5">
+      <p>FlexiTable Project Overview - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/6d9d1758fb3549c393eb4ee3523ec9f5">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/6d9d1758fb3549c393eb4ee3523ec9f5-0b1841530c6203e3-full-play.gif">
+    </a>
+  </div>
