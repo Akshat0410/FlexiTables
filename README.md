@@ -48,7 +48,7 @@ Start the application using Docker Compose:
 docker-compose up
 ```
 The application should now be running and accessible at `http://localhost:8000`.
-Incase you encounter an error here try running `docker-compose down` run the migration and then again `docker-compose up`
+Incase you encounter an error here try running the migration in a new bash/terminal and then again `docker-compose up`
 
 ### Running Migrations
 
@@ -85,5 +85,5 @@ The application provides the following API endpoints:
 
 ## Postman Collection
 
-You can find the Postman collection for this project [here](https://drive.google.com/file/d/1D_BgVc7GN4Ic1_O659te5mjpoixd6ALK/view?usp=drive_link).
+You can find the Postman collection for this project [here](https://drive.google.com/file/d/1fgz8cSjOZ1cmE6V7v06gWoRBOx7z6zt6/view?usp=drive_link).
 
