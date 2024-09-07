@@ -17,9 +17,17 @@ class OrganizationViewSet(viewsets.ModelViewSet):
     def create(self, request):
         serializer = OrganizationSerializer(data=request.data)
         if serializer.is_valid():
-            org = serializer.save()
-            self.create_database_for_org(org)
-            return Response(serializer.data, status=201)
+            data = serializer.validated_data
+            name = data['name']
+            description = data['description']
+            db_type = data['db_type']
+            org = Organization(name=name, description=description, db_type=db_type)
+            try:
+                org.save()
+                self.create_database_for_org(org)
+                return Response(serializer.data, status=201)
+            except Exception as e:
+                return Response({'error': str(e)}, status=400)
         return Response(serializer.errors, status=400)
     
     def destroy(self, request, pk=None):
@@ -59,12 +67,15 @@ class TableViewSet(viewsets.ModelViewSet):
     def create(self, request, org_id):
         serializer = TableSerializer(data=request.data)
         if serializer.is_valid():
-            table = serializer.save()
-            org = get_object_or_404(Organization, pk=org_id)
-            schema_name = f'org_{org.org_id}'
-            dynamic_model = self.create_dynamic_model(table, schema_name)
-            self.create_table(dynamic_model)
-            return Response(serializer.data, status=201)
+            try:
+                table = serializer.save()
+                org = get_object_or_404(Organization, pk=org_id)
+                schema_name = f'org_{org.org_id}'
+                dynamic_model = self.create_dynamic_model(table, schema_name)
+                self.create_table(dynamic_model)
+                return Response(serializer.data, status=201)
+            except Exception as e:
+                return Response({'error': str(e)}, status=400)
         return Response(serializer.errors, status=400)
     
     def list(self, request, org_id):
@@ -112,14 +123,16 @@ class ColumnViewSet(viewsets.ModelViewSet):
             column_type = column.data_type
 
             # Dynamically add the column to the model
-            with connection.schema_editor() as schema_editor:
-                model = apps.get_registered_model('dynamictable', table.name)
-                field = self.get_field_by_type(column_name, column_type)
-                if field:
-                    model.add_to_class(column_name, field)
-                    schema_editor.add_field(model, field)
-
-            return Response(serializer.data, status=201)
+            try:
+                with connection.schema_editor() as schema_editor:
+                    model = apps.get_registered_model('dynamictable', table.name)
+                    field = self.get_field_by_type(column_name, column_type)
+                    if field:
+                        model.add_to_class(column_name, field)
+                        schema_editor.add_field(model, field)
+                return Response(serializer.data, status=201)
+            except Exception as e:
+                return Response({'error': str(e)}, status=400)
         return Response(serializer.errors, status=400)
     
     def list(self, request, org_id, table_id):

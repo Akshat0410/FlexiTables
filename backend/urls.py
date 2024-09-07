@@ -30,6 +30,5 @@ router.register(r"organizations/(?P<org_id>[^/.]+)/tables/(?P<table_id>[^/.]+)/d
 
 urlpatterns = [
     path('api/organizations/<int:org_id>/models/', organization_models, name='organization_models'),
-
     path('api/', include(router.urls)),
 ]
