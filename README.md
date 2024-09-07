@@ -1,21 +1,24 @@
 # Flexitables
 
-This project is a Django-based application that allows for dynamic creation and management of database schemas, tables, and columns. It leverages Django REST Framework to provide API endpoints for managing organizations, tables, and columns dynamically.
+Flexitables is a Django-based application that allows dynamic creation and management of database schemas, tables, and columns. It leverages Django REST Framework to provide API endpoints for managing organizations, tables, and columns on the fly. This flexible structure lets organizations have their own custom database schemas with tables and columns created as needed.
 
 ## Features
 
-- Create and manage organizations with their own database schemas.
-- Dynamically create and manage tables within each organization's schema.
-- Dynamically add and manage columns within each table.
+- **Organization Management**: Create and manage organizations, each with its own database schema.
+- **Dynamic Table Management**: Create and manage tables within each organization's schema.
+- **Dynamic Column Management**: Add and manage columns dynamically within any table.
+- **Data Management**: Manage data within dynamically created tables for each organization.
 
 ## Prerequisites
 
-- Docker
-- Docker Compose
+Before starting, ensure you have the following installed:
+
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 ## Getting Started
 
-### Cloning the Repository
+### Clone the Repository
 
 First, clone the repository to your local machine:
 
@@ -41,6 +44,7 @@ Start the application using Docker Compose:
 docker-compose up
 ```
 The application should now be running and accessible at `http://localhost:8000`.
+Incase you encounter an error here try running `docker-compose down` run the migration and then again `docker-compose up`
 
 ### Running Migrations
 
@@ -49,6 +53,7 @@ After building the containers, run the following commands to make and apply migr
 ```bash
 docker-compose run django python manage.py migrate
 ```
+The migration file is pushed to this repo, so it is not required to explicitly run the `makemigrations` command
 
 ## API Endpoints
 
@@ -57,7 +62,8 @@ The application provides the following API endpoints:
 - `/api/organizations/` - Manage organizations.
 - `/api/organizations/{org_id}/tables/` - Manage tables within an organization.
 - `/api/organizations/{org_id}/tables/{table_id}/columns/` - Manage columns within a table.
-- `/api/organizations/{org_id}/models` - Returns all the models within the organization.
+- `/api/organizations/{org_id}/tables/{table_id}/data` - Manage data within a table.
+- `/api/organizations/{org_id}/models` - Returns all the dynamically created models within an organization.
 
 ## Postman Collection
 
