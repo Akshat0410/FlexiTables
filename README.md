@@ -89,7 +89,10 @@ You can find the Postman collection for this project [here](https://drive.google
 
 ## Loom Video
 
+[Watch the video](https://www.loom.com/share/6d9d1758fb3549c393eb4ee3523ec9f5?sid=56c86d6b-8f67-4131-a1ea-517b34cc0b81)
+
+## Loom Video
+
 Watch the Loom video for a quick overview of the project:
 
-[![Watch the video](https://cdn.loom.com/sessions/thumbnails/https://www.loom.com/share/6d9d1758fb3549c393eb4ee3523ec9f5?sid=95a46071-805b-4342-b8ca-654cb610ab67-with-play-button.png)](https://www.loom.com/share/6d9d1758fb3549c393eb4ee3523ec9f5?sid=56c86d6b-8f67-4131-a1ea-517b34cc0b81)
-
+<div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/6d9d1758fb3549c393eb4ee3523ec9f5?sid=e5ff30fe-7af9-4dc6-a14c-4caf612f5b28" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
